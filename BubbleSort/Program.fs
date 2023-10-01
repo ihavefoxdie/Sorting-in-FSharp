@@ -40,6 +40,14 @@ let ShellSort (numArray : int array) arraySize =
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let InsertionSort (numArray: int array) arraySize =
+    for i in 1 .. (arraySize - 1) do
+        for j in 0 .. (i - 1) do
+            if numArray.[i] < numArray.[j] then
+                let temp = numArray.[i]
+                numArray.[i] <- numArray.[j]
+                numArray.[j] <- temp
+
 [<EntryPoint>] 
 let main argv = 
     printfn "Sorting in F#!" 
@@ -71,5 +79,16 @@ let main argv =
     printfn ""
 
 
+
+    printfn "InsertionSort" 
+    let arr = [|3; 5; 1; 8; 6; 10; 2; 234; 1; 1; 6; 100; 213|]
+    for i in 0 .. arr.Length - 1 do
+        printf "%d " arr.[i]
+    printfn ""
+
+    InsertionSort arr arr.Length
+    for i in 0 .. arr.Length - 1 do
+        printf "%d " arr.[i]
+    printfn ""
 
     0
